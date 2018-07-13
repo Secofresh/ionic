@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 //Components
 import { PendingComponent } from '../pages/pending/pending.component';
 import { DoneComponent } from '../pages/done/done.component';
+import { AddComponent } from '../pages/add/add.component';
 
 //Services
 import { WishesService } from '../app/services/wishes.service';
@@ -20,7 +21,8 @@ import { WishesService } from '../app/services/wishes.service';
     MyApp,
     TabsPage,
     PendingComponent,
-    DoneComponent
+    DoneComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { WishesService } from '../app/services/wishes.service';
     MyApp,
     TabsPage,
     PendingComponent,
-    DoneComponent
+    DoneComponent,
+    AddComponent
   ],
   providers: [
     StatusBar,
