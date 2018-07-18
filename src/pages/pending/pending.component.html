@@ -4,22 +4,14 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
-    <ion-card *ngFor="let item of service.lists">
-        <ion-item>BOTON!!!</ion-item>
-        <h2>{{item.name}}</h2>
-        <ion-list>
-            <ion-item>
-                <ion-icon ios="ios-arrow-dropright" md="md-arrow-dropright"></ion-icon>
-                Tetris
-            </ion-item>
-            <ion-item>
-                <ion-icon ios="ios-arrow-dropright" md="md-arrow-dropright"></ion-icon>
-                Tetris
-            </ion-item>
-        </ion-list>
-    </ion-card>
+    <img src="../../assets/imgs/pendientes.jpg" alt="">
+    <ion-list>
+        <button ion-item *ngFor="let item of service.lists" (click)="itemSelected(item)">
+            {{ item.title }}
+        </button>
+    </ion-list>
 
     <ion-fab right bottom>
         <button ion-fab color="danger" (click)="AddList()">

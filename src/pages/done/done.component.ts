@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { WishesService } from '../../app/services/wishes.service';
+import { ItemList } from '../../models/item-list.model';
 
 @Component({
-  selector: 'app-done',
-  templateUrl: 'done.component.html',
+    selector: 'app-done',
+    templateUrl: 'done.component.html',
 })
 export class DoneComponent implements OnInit {
-  constructor() {  }
 
-  ngOnInit() {}
+    constructor(private service: WishesService) {  }
+
+    ngOnInit() {}
+
+    itemSelected(list: ItemList){
+        console.log(list);
+    }
 }
