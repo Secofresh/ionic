@@ -17,7 +17,15 @@ export class AddComponent {
 
     constructor(private service: WishesService, private navParams: NavParams) {
         const titulo:string = navParams.get('titulo');
-        this.lista = new ItemList(titulo);
+
+        if(this.navParams.get('lista')) {
+            this.lista = this.navParams.get('lista');
+            console.log(this.lista);
+        } else {
+            this.lista = new ItemList(titulo);
+        }
+
+        this.service.saveList(this.lista);
     }
 
     agregarItem() {
@@ -34,16 +42,19 @@ export class AddComponent {
         }
         //Add element to list
         this.lista.items.push(new Item(this.itemName));
+        this.service.saveStorage();
         //Restore default html element
         this.itemName = '';
     }
 
     updateTask(item: Item) {
         item.completed = !item.completed;
+        this.service.saveStorage();
     }
 
     deleteTask(i:number) {
         this.lista.items.splice(i, 1);
+        this.service.saveStorage();
     }
 
 }

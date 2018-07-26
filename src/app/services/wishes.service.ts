@@ -8,16 +8,17 @@ export class WishesService {
     lists: ItemList[] = [];
 
     constructor() {
-
-        const lista1 = new ItemList("Recolectar piedras del infinito");
-        const lista2 = new ItemList("Buscar Heroe");
-
-        this.saveList(lista1);
-        this.saveList(lista2);
-
-        console.log("Init Service");
+        this.pushStorage();
     }
 
+    getListPosition(title:string) {
+        for (let i = 0; i < this.lists.length; i++) {
+            if(this.lists[i].title === title) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     getList(namelist:string) {
         for (let i = 0; i < this.lists.length; i++) {
@@ -37,15 +38,31 @@ export class WishesService {
         }
     }
 
-    saveList(list: ItemList) {
+    saveList(newList: ItemList) {
         for (let i = 0; i < this.lists.length; i++) {
-            if(this.lists[i].title === list.title) {
-                this.lists[i].items.concat(list.items);
+            if(this.lists[i].title === newList.title) {
+                this.lists[i].items = this.lists[i].items.concat(newList.items.filter((item) => { this.lists[i].items.indexOf(item) < 0 }));
+                this.saveStorage();
                 return true;
             }
         }
-        this.lists.push(list);
+        this.lists.push(newList);
+        this.saveStorage();
         return true;
     }
+
+    saveStorage() {
+        localStorage.setItem('data', JSON.stringify(this.lists));
+    }
+
+    pushStorage() {
+        if(localStorage.getItem('data')) {
+            this.lists = JSON.parse(localStorage.getItem('data'));
+        } else {
+            this.lists = [];
+        }
+    }
+
+
 
 }
