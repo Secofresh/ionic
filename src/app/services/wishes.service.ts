@@ -41,7 +41,7 @@ export class WishesService {
     saveList(newList: ItemList) {
         for (let i = 0; i < this.lists.length; i++) {
             if(this.lists[i].title === newList.title) {
-                this.lists[i].items = this.lists[i].items.concat(newList.items.filter((item) => { this.lists[i].items.indexOf(item) < 0 }));
+                this.lists[i].items = this.lists[i].items.concat(newList.items.filter((item) => this.lists[i].items.indexOf(item) < 0 ));
                 this.saveStorage();
                 return true;
             }

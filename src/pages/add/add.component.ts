@@ -48,7 +48,21 @@ export class AddComponent {
     }
 
     updateTask(item: Item) {
+        //Mark item as completed
         item.completed = !item.completed;
+
+        //Check pending tasks
+        const pendingTasks = this.lista.items.filter(item => !item.completed).length;
+
+        if(pendingTasks == 0) {
+            this.lista.finished = true;
+            this.lista.finishedOn = new Date();
+        } else {
+            this.lista.finished = false;
+            this.lista.finishedOn = null;
+        }
+
+        //Save data
         this.service.saveStorage();
     }
 

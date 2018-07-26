@@ -9,6 +9,9 @@
     <ion-list>
         <button ion-item *ngFor="let item of service.lists" (click)="itemSelected(item)">
             {{ item.title }}
+            <ion-note item-end>
+                {{item.items.length}} items
+            </ion-note>
         </button>
     </ion-list>
 
