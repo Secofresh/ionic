@@ -22,9 +22,25 @@
     </ion-card>
 
 
-    <ion-list>
-        <button ion-item detail-none *ngFor="let item of lista.items">
-            <ion-icon name="square-outline" item-start></ion-icon>{{item.desc}}
-        </button>
+    <ion-list *ngIf="lista.items.length > 0">
+        <ion-list-header>
+            Tareas por hacer
+        </ion-list-header>
+
+        <ion-item-sliding class="animated fadeInDown" *ngFor="let item of lista.items; let i = index">
+            <button ion-item detail-none   (click)="updateTask(item)">
+                <ion-icon name="square-outline" item-start *ngIf="!item.completed"></ion-icon>
+                <ion-icon name="checkbox-outline" item-start *ngIf="item.completed"></ion-icon>
+                {{item.desc}}
+            </button>
+
+            <ion-item-options side="right">
+                <button ion-button icon-only color="danger" (click)="deleteTask(i)">
+                    <ion-icon name="close"></ion-icon>
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+
     </ion-list>
 </ion-content>

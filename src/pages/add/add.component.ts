@@ -15,31 +15,35 @@ export class AddComponent {
 
     lista: ItemList;
 
-    constructor(private service: WishesService,
-        private navParams: NavParams) {
-
-        console.log(navParams.get('titulo'));
+    constructor(private service: WishesService, private navParams: NavParams) {
         const titulo:string = navParams.get('titulo');
         this.lista = new ItemList(titulo);
     }
 
     agregarItem() {
+        //If you have enter a list
         if(this.itemName.length === 0) {
-            return;
+        return;
         }
+        //Check if item is in list
         for (let i = 0; i < this.lista.items.length; i++) {
             if( this.lista.items[i].desc === this.itemName ) {
                 this.itemName = '';
                 return;
             }
         }
-        const item = new Item(this.itemName);
-        this.lista.items.push(item);
+        //Add element to list
+        this.lista.items.push(new Item(this.itemName));
+        //Restore default html element
         this.itemName = '';
     }
 
-    save(listName, itemName) {
-        console.log("Guardar lista: " + listName);
-        console.log("Guardar elemento: " + itemName);
+    updateTask(item: Item) {
+        item.completed = !item.completed;
     }
+
+    deleteTask(i:number) {
+        this.lista.items.splice(i, 1);
+    }
+
 }
