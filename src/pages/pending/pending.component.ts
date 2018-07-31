@@ -46,6 +46,10 @@ export class PendingComponent {
         alerta.present();
     }
 
+    deleteList(list: ItemList) {
+        this.service.deleteList(list);
+    }
+
     itemSelected(list: ItemList){
         this.nav.push(AddComponent, {titulo: list.title, lista: list});
     }

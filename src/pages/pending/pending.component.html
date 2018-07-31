@@ -6,15 +6,9 @@
 
 <ion-content>
     <!-- <img src="../../assets/imgs/pendientes.jpg" alt=""> -->
-    <ion-list>
-        <button ion-item *ngFor="let item of service.lists" (click)="itemSelected(item)">
-            {{ item.title }}
-            <ion-note item-end>
-                {{item.items.length}} items
-            </ion-note>
-        </button>
-    </ion-list>
 
+    <app-lists></app-lists>
+    
     <ion-fab right bottom>
         <button ion-fab color="danger" (click)="AddList()">
             <ion-icon ios="ios-add" md="md-add"></ion-icon>

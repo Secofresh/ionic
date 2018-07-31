@@ -20,7 +20,6 @@ export class AddComponent {
 
         if(this.navParams.get('lista')) {
             this.lista = this.navParams.get('lista');
-            console.log(this.lista);
         } else {
             this.lista = new ItemList(titulo);
         }

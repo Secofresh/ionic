@@ -12,9 +12,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PendingComponent } from '../pages/pending/pending.component';
 import { DoneComponent } from '../pages/done/done.component';
 import { AddComponent } from '../pages/add/add.component';
+import { ListsComponent } from '../components/lists.component';
 
 //Services
 import { WishesService } from '../app/services/wishes.service';
+
+//Pipes
+import { FilterCompletedPipe } from '../pipes/filter-completed/filter-completed';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +27,9 @@ import { WishesService } from '../app/services/wishes.service';
     TabsPage,
     PendingComponent,
     DoneComponent,
-    AddComponent
+    AddComponent,
+    ListsComponent,
+    FilterCompletedPipe
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,4 @@ export class DoneComponent implements OnInit {
 
     ngOnInit() {}
 
-    itemSelected(list: ItemList){
-        console.log(list);
-    }
 }

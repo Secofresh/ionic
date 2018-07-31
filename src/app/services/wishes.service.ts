@@ -51,6 +51,11 @@ export class WishesService {
         return true;
     }
 
+    deleteList(list: ItemList) {
+        this.lists = this.lists.filter(item => item.id !== list.id);
+        this.saveStorage();
+    }
+
     saveStorage() {
         localStorage.setItem('data', JSON.stringify(this.lists));
     }
@@ -62,7 +67,5 @@ export class WishesService {
             this.lists = [];
         }
     }
-
-
 
 }
